@@ -14,13 +14,17 @@ export const resumePeriod = ({
   start: string;
   end: string | null;
 }) => {
-  let endDate = new Date();
   const startDate = new Date(start);
-  if (end) endDate = new Date(end);
-  console.log({ startDate, endDate });
+  let endDate = new Date();
+
+  if (end) {
+    endDate = new Date(end);
+  }
+
   const duration = intervalToDuration({
     start: startDate,
     end: endDate,
   });
+
   return formatDuration(duration, { format: ["years", "months"] });
 };

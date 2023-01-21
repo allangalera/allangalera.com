@@ -4,8 +4,6 @@ import experiences from "../../data/experiences.json";
 import { Icon } from "astro-icon";
 import { resumePeriod, resumeShowDate } from "../../utils";
 import Tooltip from "../../components/Tooltip/Tooltip.astro";
-
-console.log(experiences);
 ---
 
 <Layout title="Resume | Allan Galera">
@@ -13,10 +11,22 @@ console.log(experiences);
     <div class="flex gap-4 items-center">
       <h1>Resume</h1>
       <Tooltip>
-        <button id="download-pdf" class="btn btn-outline" data-tooltip-element>
-          <Icon name="carbon:document-download" class="w-5" />
-        </button>
-        <span slot="tooltip-content">Download as PDF</span>
+        <div class="flex items-center gap-3">
+          <button
+            id="download-pdf"
+            class="btn btn-outline"
+            data-tooltip-element
+          >
+            <Icon name="carbon:document-download" class="w-5" />
+          </button>
+
+          <p class="text-xs max-w-6">
+            if you have dark mode enable this will flicker the screen
+          </p>
+        </div>
+        <span slot="tooltip-content">
+          <p class="text-center text-sm">Download as PDF</p>
+        </span>
       </Tooltip>
     </div>
     <div id="resume">
@@ -45,10 +55,14 @@ console.log(experiences);
 </Layout>
 <script>
   import html2pdf from "html2pdf.js";
+
+  import { ThemeOptions } from "../../constants";
   const buttons = document.querySelectorAll("#download-pdf");
 
   buttons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", ThemeOptions.Light);
       const element = document.getElementById("resume");
       const opt = {
         margin: 1,
@@ -57,7 +71,11 @@ console.log(experiences);
         html2canvas: { scale: 3 },
         jsPDF: { unit: "cm", format: "letter", orientation: "portrait" },
       };
-      html2pdf(element, opt);
+      await html2pdf().set(opt).from(element).save();
+      document.documentElement.setAttribute(
+        "data-theme",
+        currentTheme ?? ThemeOptions.Dracula
+      );
     });
   });
 </script>
