@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import experiences from "../../data/experiences.json";
+import { Icon } from "astro-icon";
+import { resumePeriod, resumeShowDate } from "../../utils";
+import Tooltip from "../../components/Tooltip/Tooltip.astro";
+
+console.log(experiences);
+---
+
+<Layout title="Resume | Allan Galera">
+  <div class="h-full flex flex-col gap-4 max-w-2xl m-auto">
+    <div class="flex gap-4 items-center">
+      <h1>Resume</h1>
+      <Tooltip>
+        <button id="download-pdf" class="btn btn-outline" data-tooltip-element>
+          <Icon name="carbon:document-download" class="w-5" />
+        </button>
+        <span slot="tooltip-content">Download as PDF</span>
+      </Tooltip>
+    </div>
+    <div id="resume">
+      <h1>Experience</h1>
+      <div class="divider m-0"></div>
+      {
+        experiences.map((job) => (
+          <div>
+            <h2 class="text-3xl flex gap-3 items-center">
+              {job.company}
+              {job.linkedin && (
+                <a class="print:text-black" target="_blank" href={job.linkedin}>
+                  <Icon name="brandico:linkedin-rect" class="w-5" />
+                </a>
+              )}
+            </h2>
+            <p>
+              {resumeShowDate(job.startDate)} - {resumeShowDate(job.endDate)} .{" "}
+              {resumePeriod({ start: job.startDate, end: job.endDate })}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+<script>
+  import html2pdf from "html2pdf.js";
+  const buttons = document.querySelectorAll("#download-pdf");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const element = document.getElementById("resume");
+      const opt = {
+        margin: 1,
+        filename: "resume-AllanGalera.pdf",
+        image: { type: "jpeg", quality: 0.8 },
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: "cm", format: "letter", orientation: "portrait" },
+      };
+      html2pdf(element, opt);
+    });
+  });
+</script>

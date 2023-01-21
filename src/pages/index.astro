@@ -1,58 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Code from "../components/Code/Code.astro";
-import { themes } from "../constants";
-import { Icon } from "astro-icon";
-
-const code = `
-// this is a comment
-import { defineConfig } from "astro/config";
-
-import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
-
-const myFn = (arg: string) => {
-  console.log("aqui");
-};
-
-export default defineConfig({
-  integrations: [
-    mdx(),
-    tailwind({
-      config: { applyBaseStyles: false },
-    }),
-  ],
-});
-`;
 ---
 
-<Layout title="Welcome to Astro.">
-  <div class="dropdown">
-    <label tabindex="0" class="btn btn-ghost m-1 capitalize">
-      <Icon name="ic:baseline-color-lens" class="w-5" /> Theme
-    </label>
-    <div class="dropdown-content overflow-auto max-h-96">
-      <ul tabindex="0" class="menu p-2 shadow bg-base-200 rounded-box w-52">
-        {
-          themes.map((theme) => (
-            <li>
-              <span class="capitalize" data-set-theme={theme}>
-                {theme}
-              </span>
-            </li>
-          ))
-        }
-      </ul>
+<Layout title="Home | Allan Galera">
+  <div class="h-full flex flex-col items-center justify-center gap-4">
+    <div class="max-w-lg flex flex-col gap-2">
+      <h1>Hi,</h1>
+      <p>I'm Allan Galera</p>
+      <p>
+        passionate about technology and work as a Web Developer since 2016. I
+        always reading news in the programming world and keep a few personal
+        projects.
+      </p>
     </div>
-  </div>
-  <h1>Welcome to Astro</h1>
-  <p>
-    To get started, open the directory <code>src/pages</code> in your project.<br
-    />
-    <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-  </p>
-  <br />
-  <div class="flex flex-col gap-4">
-    <Code code={code} fileName="example.js" lang="javascript" />
+    <div>
+      <a class="link" href="/resume">Resume</a>
+    </div>
   </div>
 </Layout>
