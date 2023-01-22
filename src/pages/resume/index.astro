@@ -4,9 +4,13 @@ import experiences from "../../data/experiences.json";
 import { Icon } from "astro-icon";
 import { resumePeriod, resumeShowDate } from "../../utils";
 import Tooltip from "../../components/Tooltip/Tooltip.astro";
+
+const seoOptions = {
+  title: "Resume | Allan Galera",
+};
 ---
 
-<Layout title="Resume | Allan Galera">
+<Layout seoOptions={seoOptions}>
   <div class="h-full flex flex-col gap-4 max-w-2xl m-auto">
     <div class="flex gap-4 items-center">
       <h1>Resume</h1>
