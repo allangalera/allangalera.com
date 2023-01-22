@@ -16,6 +16,11 @@ const seoDefaultOptions = {
     site: "allangalera.com",
   },
 } satisfies SEOProps;
+
+const seo = {
+  ...seoDefaultOptions,
+  ...seoOptions,
+};
 ---
 
 <!DOCTYPE html>
@@ -26,7 +31,7 @@ const seoDefaultOptions = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <script is:inline src="/prism.js"></script>
-    <SEO {{...seoDefaultOptions, ...seoOptions}} />
+    <SEO {...seo} />
     <script>
       import { DefaultThemes, isTheme, ThemeOptions } from "../constants";
 
