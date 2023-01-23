@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon";
+import Tooltip from "~/components/Tooltip/Tooltip.astro";
+import { experiences } from "~/data/experiences";
+import Experience from "~/modules/resume/components/Experience/Experience.astro";
+import { calculateWholeExperienceTime, period } from "../utils";
+
+const { startDate, endDate } = calculateWholeExperienceTime(experiences);
+---
+
+<div class="h-full flex flex-col gap-4 max-w-2xl m-auto">
+  <div class="flex gap-4 items-center">
+    <h1 class="text-3xl md:text-5xl">Resume</h1>
+    <Tooltip>
+      <div class="flex items-center gap-3">
+        <button id="download-pdf" class="btn btn-outline" data-tooltip-element>
+          <Icon name="carbon:document-download" class="w-5" />
+        </button>
+
+        <p class="text-xs max-w-6">
+          if you have dark mode enable this will flicker the screen
+        </p>
+      </div>
+      <span slot="tooltip-content">
+        <p class="text-center text-sm">Download as PDF</p>
+      </span>
+    </Tooltip>
+  </div>
+  <div id="resume">
+    <h2 class="text-2xl md:text-4xl">Experience</h2>
+    <div class="divider m-0"></div>
+    <div class="flex gap-4 py-4">
+      <div class="flex py-6">
+        <div class="divider divider-horizontal w-min text-xs m-0">
+          {period({ start: startDate, end: endDate })}
+        </div>
+      </div>
+      <div class="flex flex-col gap-4 flex-1">
+        {experiences.map((job) => <Experience {...job} />)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import html2pdf from "html2pdf.js";
+
+  import { ThemeOptions } from "../../../constants";
+  const buttons = document.querySelectorAll("#download-pdf");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", ThemeOptions.Light);
+      const element = document.getElementById("resume");
+      const opt = {
+        margin: 1,
+        filename: "resume-AllanGalera.pdf",
+        image: { type: "jpeg", quality: 0.8 },
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: "cm", format: "letter", orientation: "portrait" },
+      };
+      await html2pdf().set(opt).from(element).save();
+      document.documentElement.setAttribute(
+        "data-theme",
+        currentTheme ?? ThemeOptions.Dracula
+      );
+    });
+  });
+</script>

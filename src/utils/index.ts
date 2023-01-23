@@ -1,30 +1,25 @@
-import { format, formatDuration, intervalToDuration } from "date-fns";
+import { DefaultThemes, isTheme, ThemeOptions } from "~/constants";
 
-export const resumeShowDate = (value: string | null) => {
-  if (!value) {
-    return "Present";
-  }
-  return format(new Date(value), "MMMM yyyy");
+export const setTheme = (theme: ThemeOptions) => {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
 };
 
-export const resumePeriod = ({
-  start,
-  end,
-}: {
-  start: string;
-  end: string | null;
-}) => {
-  const startDate = new Date(start);
-  let endDate = new Date();
-
-  if (end) {
-    endDate = new Date(end);
+export const getTheme = () => {
+  const themeFromLocalStorage = localStorage.getItem("theme");
+  if (themeFromLocalStorage === null) {
+    const isDarkMode =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return isDarkMode ? DefaultThemes.Dark : DefaultThemes.Light;
   }
 
-  const duration = intervalToDuration({
-    start: startDate,
-    end: endDate,
-  });
-
-  return formatDuration(duration, { format: ["years", "months"] });
+  if (isTheme(themeFromLocalStorage)) {
+    return themeFromLocalStorage;
+  } else {
+    const isDarkMode =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return isDarkMode ? DefaultThemes.Dark : DefaultThemes.Light;
+  }
 };

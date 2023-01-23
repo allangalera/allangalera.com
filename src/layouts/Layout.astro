@@ -1,7 +1,8 @@
 ---
 import "./base.css";
-import Header from "../components/Header/Header.astro";
+import Header from "~/components/Header/Header.astro";
 import { SEO, Props as SEOProps } from "astro-seo";
+
 export interface Props {
   seoOptions: SEOProps;
 }
@@ -33,31 +34,13 @@ const seo = {
     <script is:inline src="/prism.js"></script>
     <SEO {...seo} />
     <script>
-      import { DefaultThemes, isTheme, ThemeOptions } from "../constants";
-
-      function setTheme(theme: ThemeOptions) {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-      }
+      import { getTheme, setTheme } from "~/utils";
+      import { DefaultThemes } from "../constants";
 
       function initializeColorScheme() {
-        const themeFromLocalStorage = localStorage.getItem("theme");
-        if (themeFromLocalStorage === null) {
-          const isDarkMode =
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches;
-          if (isDarkMode) {
-            setTheme(DefaultThemes.Dark);
-          } else {
-            setTheme(DefaultThemes.Light);
-          }
-        } else {
-          if (isTheme(themeFromLocalStorage)) {
-            setTheme(themeFromLocalStorage);
-          } else {
-            setTheme(DefaultThemes.Dark);
-          }
-        }
+        const currentTheme = getTheme();
+
+        setTheme(currentTheme);
       }
 
       initializeColorScheme();

@@ -1,9 +1,6 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import experiences from "../../data/experiences.json";
-import { Icon } from "astro-icon";
-import { resumePeriod, resumeShowDate } from "../../utils";
-import Tooltip from "../../components/Tooltip/Tooltip.astro";
+import Layout from "~/layouts/Layout.astro";
+import ResumePage from "~/modules/resume/page/index.astro";
 
 const seoOptions = {
   title: "Resume | Allan Galera",
@@ -11,75 +8,5 @@ const seoOptions = {
 ---
 
 <Layout seoOptions={seoOptions}>
-  <div class="h-full flex flex-col gap-4 max-w-2xl m-auto">
-    <div class="flex gap-4 items-center">
-      <h1>Resume</h1>
-      <Tooltip>
-        <div class="flex items-center gap-3">
-          <button
-            id="download-pdf"
-            class="btn btn-outline"
-            data-tooltip-element
-          >
-            <Icon name="carbon:document-download" class="w-5" />
-          </button>
-
-          <p class="text-xs max-w-6">
-            if you have dark mode enable this will flicker the screen
-          </p>
-        </div>
-        <span slot="tooltip-content">
-          <p class="text-center text-sm">Download as PDF</p>
-        </span>
-      </Tooltip>
-    </div>
-    <div id="resume">
-      <h1>Experience</h1>
-      <div class="divider m-0"></div>
-      {
-        experiences.map((job) => (
-          <div>
-            <h2 class="text-3xl flex gap-3 items-center">
-              {job.company}
-              {job.linkedin && (
-                <a class="print:text-black" target="_blank" href={job.linkedin}>
-                  <Icon name="brandico:linkedin-rect" class="w-5" />
-                </a>
-              )}
-            </h2>
-            <p>
-              {resumeShowDate(job.startDate)} - {resumeShowDate(job.endDate)} .{" "}
-              {resumePeriod({ start: job.startDate, end: job.endDate })}
-            </p>
-          </div>
-        ))
-      }
-    </div>
-  </div>
+  <ResumePage />
 </Layout>
-<script>
-  import html2pdf from "html2pdf.js";
-
-  import { ThemeOptions } from "../../constants";
-  const buttons = document.querySelectorAll("#download-pdf");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", async () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      document.documentElement.setAttribute("data-theme", ThemeOptions.Light);
-      const element = document.getElementById("resume");
-      const opt = {
-        margin: 1,
-        filename: "resume-AllanGalera.pdf",
-        image: { type: "jpeg", quality: 0.8 },
-        html2canvas: { scale: 3 },
-        jsPDF: { unit: "cm", format: "letter", orientation: "portrait" },
-      };
-      await html2pdf().set(opt).from(element).save();
-      document.documentElement.setAttribute(
-        "data-theme",
-        currentTheme ?? ThemeOptions.Dracula
-      );
-    });
-  });
-</script>

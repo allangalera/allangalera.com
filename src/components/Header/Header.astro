@@ -1,10 +1,12 @@
 ---
-import { themes } from "../../constants";
+import { themes } from "~/constants";
 import { Icon } from "astro-icon";
 ---
 
-<header class="flex justify-between items-center sticky top-0 p-5 print:hidden">
-  <a class="text-2xl" href="/">Allan Galera</a>
+<header
+  class="flex justify-between items-center sticky top-0 p-5 print:hidden bg-base-300 navbar"
+>
+  <a class="btn btn-ghost normal-case text-2xl" href="/">Allan Galera</a>
   <div>
     <div class="dropdown dropdown-end">
       <label
@@ -13,8 +15,11 @@ import { Icon } from "astro-icon";
       >
         <Icon name="majesticons:color-swatch-line" class="w-5" /> Theme
       </label>
-      <div class="dropdown-content overflow-auto max-h-96">
-        <ul tabindex="0" class="menu p-2 shadow bg-base-200 rounded-box w-52">
+      <div class="dropdown-content overflow-auto max-h-96 z-40 shadow-xl">
+        <ul
+          tabindex="0"
+          class="menu p-2 shadow bg-base-200 rounded-box w-52 z-40"
+        >
           {
             themes.map((theme) => (
               <li>
