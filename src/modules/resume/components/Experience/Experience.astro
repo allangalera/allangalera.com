@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon";
 import {
   calculateJobStartandEndDate,
+  getTypeFormat,
   period,
   showDate,
 } from "~/modules/resume/utils";
@@ -21,20 +22,42 @@ const { startDate, endDate } = calculateJobStartandEndDate(props.jobTitles);
     {props.company}
     {
       props.linkedin && (
-        <a class="print:text-black" target="_blank" href={props.linkedin}>
+        <a target="_blank" href={props.linkedin}>
           <Icon name="brandico:linkedin-rect" class="w-4 md:w-5" />
         </a>
       )
     }
   </h3>
-  <p class="text-sm">
-    {showDate(endDate)}
+  <p class="text-xs">
+    {getTypeFormat(props.type) + " · "}{
+      period({ start: startDate, end: endDate })
+    }
   </p>
-  <p class="text-sm">
-    {showDate(startDate)}
-  </p>
-  <p class="text-sm">
-    {period({ start: startDate, end: endDate })}
+  <p class="text-xs">
+    {showDate(startDate)} - {showDate(endDate)}
   </p>
   <p class="text-xs">{props.location}</p>
+  <div class="flex gap-2 pt-2">
+    <div class="flex py-1">
+      <div class="divider divider-horizontal w-min text-xs m-0"></div>
+    </div>
+    <div class="flex flex-col gap-2">
+      {
+        props.jobTitles.map((jobTitle) => (
+          <div class="flex flex-col gap-1">
+            <p class="text-sm font-bold">{jobTitle.title}</p>
+            {jobTitle.description && (
+              <p class="text-xs">{jobTitle.description}</p>
+            )}
+            <div>
+              <p class="text-xs">{jobTitle.location}</p>
+              <p class="text-xs">
+                {showDate(jobTitle.startDate)} - {showDate(jobTitle.endDate)}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </div>

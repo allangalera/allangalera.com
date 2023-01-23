@@ -7,15 +7,16 @@ import {
 } from "date-fns";
 import type {
   Experience,
-  JobPermanence,
+  ExperienceTypes,
   JobTitles,
 } from "~/modules/resume/types";
+import { ExperienceTypesOptions } from "../constants";
 
-export const showDate = (value: Date) => {
-  if (compareAsc(new Date(), value) === 0) {
+export const showDate = (value: Date | undefined) => {
+  if (!value) {
     return "Present";
   }
-  return format(value, "MMMM yyyy");
+  return format(value, "MMM yyyy");
 };
 
 export const period = ({ start, end }: { start: Date; end: Date }) => {
@@ -27,8 +28,8 @@ export const period = ({ start, end }: { start: Date; end: Date }) => {
   return formatDuration(duration, { format: ["years", "months"] });
 };
 
-export const getEndDate = (date: string | null) => {
-  return date ? new Date(date) : new Date();
+export const getEndDate = (date: Date | undefined) => {
+  return date ? date : new Date();
 };
 
 export const calculateJobStartandEndDate = (jobTitles: JobTitles[]) => {
@@ -90,4 +91,13 @@ export const calculateWholeExperienceTime = (experiences: Experience[]) => {
     startDate,
     endDate,
   };
+};
+
+export const getTypeFormat = (value: ExperienceTypes | undefined) => {
+  switch (value) {
+    case ExperienceTypesOptions.Full:
+      return "Full-time";
+    default:
+      return "";
+  }
 };
