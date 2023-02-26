@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon";
-import Tooltip from "~/components/Tooltip/Tooltip.astro";
-import { experiences } from "~/data/experiences";
-import Experience from "~/modules/resume/components/Experience/Experience.astro";
+import Tooltip from "@/components/Tooltip/Tooltip.astro";
+import { experiences } from "@/data/experiences";
+import Experience from "@/modules/resume/components/Experience/Experience.astro";
 import { calculateWholeExperienceTime, period } from "../utils";
 
 const { startDate, endDate } = calculateWholeExperienceTime(experiences);
@@ -41,30 +41,3 @@ const { startDate, endDate } = calculateWholeExperienceTime(experiences);
     </div>
   </div>
 </div>
-
-<script>
-  import html2pdf from "html2pdf.js";
-
-  import { ThemeOptions } from "../../../constants";
-  const buttons = document.querySelectorAll("#download-pdf");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", async () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      document.documentElement.setAttribute("data-theme", ThemeOptions.Light);
-      const element = document.getElementById("resume");
-      const opt = {
-        margin: 1,
-        filename: "resume-AllanGalera.pdf",
-        image: { type: "jpeg", quality: 0.8 },
-        html2canvas: { scale: 3 },
-        jsPDF: { unit: "cm", format: "letter", orientation: "portrait" },
-      };
-      await html2pdf().set(opt).from(element).save();
-      document.documentElement.setAttribute(
-        "data-theme",
-        currentTheme ?? ThemeOptions.Dracula
-      );
-    });
-  });
-</script>

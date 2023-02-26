@@ -1,4 +1,4 @@
-import type { Experience } from "~/modules/resume/types";
+import type { Experience } from "@/modules/resume/types";
 
 export const experiences = [
   {

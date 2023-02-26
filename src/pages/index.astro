@@ -1,5 +1,5 @@
 ---
-import Layout from "~/layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const seoOptions = {
   title: "Home | Allan Galera",
@@ -8,7 +8,7 @@ const seoOptions = {
 
 <Layout seoOptions={seoOptions}>
   <div class="h-full flex flex-col items-center justify-center gap-4">
-    <div class="max-w-lg flex flex-col gap-2">
+    <div class="max-w-lg flex flex-col gap-2 text-black dark:text-white">
       <h1>Hi,</h1>
       <p>I'm Allan Galera</p>
       <p>
@@ -18,7 +18,9 @@ const seoOptions = {
       </p>
     </div>
     <div>
-      <a class="link" href="/resume">Resume</a>
+      <a class="text-gray-900 dark:text-gray-50 underline" href="/resume"
+        >Resume</a
+      >
     </div>
   </div>
 </Layout>

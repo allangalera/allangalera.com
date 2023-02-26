@@ -1,6 +1,6 @@
 ---
 import "./base.css";
-import Header from "~/components/Header/Header.astro";
+import Header from "@/components/Header/Header.astro";
 import { SEO, Props as SEOProps } from "astro-seo";
 
 export interface Props {
@@ -34,8 +34,8 @@ const seo = {
     <script is:inline src="/prism.js"></script>
     <SEO {...seo} />
     <script>
-      import { getTheme, setTheme } from "~/utils";
-      import { DefaultThemes } from "../constants";
+      import { getTheme, setTheme } from "@/utils";
+      import { THEME_OPTIONS } from "../constants";
 
       function initializeColorScheme() {
         const currentTheme = getTheme();
@@ -47,21 +47,15 @@ const seo = {
 
       window
         .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (e) => {
-          if (e.matches) {
-            setTheme(DefaultThemes.Dark);
-          } else {
-            setTheme(DefaultThemes.Light);
+        .addEventListener("change", () => {
+          if (getTheme() === THEME_OPTIONS.System) {
+            setTheme(THEME_OPTIONS.System);
           }
         });
     </script>
-    <script>
-      import { themeChange } from "theme-change";
-      themeChange();
-    </script>
   </head>
   <body
-    class="font-sans min-h-screen min-w-screen bg-base-100 grid grid-rows-[max-content_1fr]"
+    class="font-sans min-h-screen min-w-screen bg-gray-50 grid grid-rows-[max-content_1fr] dark:bg-gray-900"
   >
     <Header />
     <main class="p-5">

@@ -2,14 +2,13 @@ import {
   format,
   formatDuration,
   intervalToDuration,
-  compareAsc,
   closestTo,
 } from "date-fns";
 import type {
   Experience,
   ExperienceTypes,
   JobTitles,
-} from "~/modules/resume/types";
+} from "@/modules/resume/types";
 import { ExperienceTypesOptions } from "../constants";
 
 export const showDate = (value: Date | undefined) => {

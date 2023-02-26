@@ -1,4 +1,4 @@
-import type { ExperienceTypesOptions } from "~/modules/resume/constants";
+import type { ExperienceTypesOptions } from "@/modules/resume/constants";
 
 export type ExperienceTypes =
   (typeof ExperienceTypesOptions)[keyof typeof ExperienceTypesOptions];
