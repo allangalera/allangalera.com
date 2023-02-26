@@ -2,6 +2,7 @@
 import "./base.css";
 import Header from "@/components/Header/Header.astro";
 import { SEO, Props as SEOProps } from "astro-seo";
+import { Footer } from "@/components/solidjs/Footer";
 
 export interface Props {
   seoOptions: SEOProps;
@@ -55,11 +56,12 @@ const seo = {
     </script>
   </head>
   <body
-    class="font-sans min-h-screen min-w-screen bg-zinc-50 grid grid-rows-[max-content_1fr] dark:bg-zinc-900"
+    class="font-sans min-h-[100svh] bg-zinc-50 grid grid-rows-[max-content_1fr_max-content] dark:bg-zinc-900"
   >
     <Header />
     <main class="p-5">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>

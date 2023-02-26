@@ -6,8 +6,8 @@ import { THEME_OPTIONS } from "@/constants";
 export const ThemeDropdown = () => {
   return (
     <DropdownMenu.Root sameWidth={false} slide={true}>
-      <DropdownMenu.Trigger class="text-zinc-900 dark:text-zinc-50">
-        <p>Theme</p>
+      <DropdownMenu.Trigger class="text-zinc-900 dark:text-zinc-50 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 text-lg leading-tight">
+        Theme
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content class="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 rounded-lg">
