@@ -1,9 +1,8 @@
 import { THEME_OPTIONS, themes } from "@/constants";
 import type { ThemeOptions } from "@/types";
-import * as Belt from "@mobily/ts-belt";
 
 export const isTheme = (value: string): value is ThemeOptions => {
-  return Belt.A.includes(themes, value);
+  return themes.includes(value);
 };
 
 export const getCurrentSystemTheme = () => {
