@@ -6,33 +6,33 @@ import { THEME_OPTIONS } from "@/constants";
 export const ThemeDropdown = () => {
   return (
     <DropdownMenu.Root sameWidth={false} slide={true}>
-      <DropdownMenu.Trigger class="text-gray-900 dark:text-gray-50">
+      <DropdownMenu.Trigger class="text-zinc-900 dark:text-zinc-50">
         <p>Theme</p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
+        <DropdownMenu.Content class="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 rounded-lg">
+          <DropdownMenu.Arrow />
           <DropdownMenu.Item
             onSelect={() => setTheme(THEME_OPTIONS.Light)}
-            class="flex gap-1 items-center"
+            class="flex gap-2 items-center p-2 cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-t-lg"
           >
             <FiSun />
-            <p>Light</p>
+            <p class="text-sm leading-tight">Light</p>
           </DropdownMenu.Item>
           <DropdownMenu.Item
             onSelect={() => setTheme(THEME_OPTIONS.Dark)}
-            class="flex gap-1 items-center"
+            class="flex gap-2 items-center p-2 cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700"
           >
             <FiMoon />
-            <p>Dark</p>
+            <p class="text-sm leading-tight">Dark</p>
           </DropdownMenu.Item>
           <DropdownMenu.Item
-            class="flex gap-1 items-center"
+            class="flex gap-2 items-center p-2 cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700  rounded-b-lg"
             onSelect={() => setTheme(THEME_OPTIONS.System)}
           >
             <FiMonitor />
-            <p>System</p>
+            <p class="text-sm leading-tight">System</p>
           </DropdownMenu.Item>
-          <DropdownMenu.Arrow />
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

@@ -24,7 +24,8 @@ module.exports = {
           extraFileExtensions: [".astro"],
         },
         rules: {
-          "prettier/prettier": "off"
+          "prettier/prettier": "off",
+          "@typescript-eslint/no-unsafe-assignment": "off"
         },
       },
     ],
