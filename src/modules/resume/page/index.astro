@@ -1,6 +1,6 @@
 ---
 import { experiences } from "@/data/experiences";
-import Experience from "@/modules/resume/components/Experience/Experience.astro";
+import { ExperienceItem } from "@/modules/resume/components/Experience";
 import { calculateWholeExperienceTime, period } from "../utils";
 
 const { startDate, endDate } = calculateWholeExperienceTime(experiences);
@@ -22,7 +22,7 @@ const { startDate, endDate } = calculateWholeExperienceTime(experiences);
       </p>
     </div>
     <div class="flex flex-col gap-4 flex-1">
-      {experiences.map((job) => <Experience {...job} />)}
+      {experiences.map((job) => <ExperienceItem {...job} client:load />)}
     </div>
   </div>
 </div>
