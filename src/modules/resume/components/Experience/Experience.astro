@@ -15,27 +15,33 @@ const props = Astro.props;
 const { startDate, endDate } = calculateJobStartandEndDate(props.jobTitles);
 ---
 
-<div class="bg-base-300 p-3 pt-1 rounded-md">
+<div class="p-3 pt-1 rounded-md">
   <div class="flex column justify-between">
     <div class="flex gap-3 items-center">
-      <h3 class="flex gap-3 items-center text-xl md:text-xl leading-tight mb-2">
+      <h3
+        class="flex gap-3 items-center text-xl md:text-xl leading-tight mb-2 text-zinc-900 dark:text-zinc-50"
+      >
         {props.company}
       </h3>
       {
         props.linkedin && (
-          <a target="_blank" href={props.linkedin}>
+          <a
+            class="text-zinc-900 dark:text-zinc-50"
+            target="_blank"
+            href={props.linkedin}
+          >
             <Icon name="brandico:linkedin-rect" class="w-4 md:w-5" />
           </a>
         )
       }
     </div>
     <div>
-      <p class="text-sm">
+      <p class="text-sm text-zinc-900 dark:text-zinc-50">
         {getTypeFormat(props.type) + " · "}{
           period({ start: startDate, end: endDate })
         }
       </p>
-      <p class="text-sm">
+      <p class="text-sm text-zinc-900 dark:text-zinc-50">
         {showDate(startDate)} - {showDate(endDate)}
       </p>
     </div>
@@ -48,13 +54,19 @@ const { startDate, endDate } = calculateJobStartandEndDate(props.jobTitles);
       {
         props.jobTitles.map((jobTitle) => (
           <div class="flex flex-col">
-            <p class="text-base font-bold">{jobTitle.title}</p>
+            <p class="text-base font-bold text-zinc-900 dark:text-zinc-50">
+              {jobTitle.title}
+            </p>
             {jobTitle.description && (
-              <p class="text-base">{jobTitle.description}</p>
+              <p class="text-base text-zinc-900 dark:text-zinc-50">
+                {jobTitle.description}
+              </p>
             )}
             <div>
-              <p class="text-sm">{jobTitle.location}</p>
-              <p class="text-sm">
+              <p class="text-sm text-zinc-900 dark:text-zinc-50">
+                {jobTitle.location}
+              </p>
+              <p class="text-sm text-zinc-900 dark:text-zinc-50">
                 {showDate(jobTitle.startDate)} - {showDate(jobTitle.endDate)}
               </p>
             </div>
