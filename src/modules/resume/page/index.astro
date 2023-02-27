@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon";
-import Tooltip from "@/components/Tooltip/Tooltip.astro";
 import { experiences } from "@/data/experiences";
 import Experience from "@/modules/resume/components/Experience/Experience.astro";
 import { calculateWholeExperienceTime, period } from "../utils";
@@ -11,22 +9,6 @@ const { startDate, endDate } = calculateWholeExperienceTime(experiences);
 <div class="h-full grid gap-8 max-w-2xl m-auto">
   <div class="flex gap-4 items-center">
     <h1 class="text-3xl md:text-5xl text-zinc-900 dark:text-zinc-50">Resume</h1>
-    <Tooltip>
-      <div class="flex items-center gap-3">
-        <button
-          id="download-pdf"
-          class="text-zinc-900 dark:text-zinc-50"
-          data-tooltip-element
-        >
-          <Icon name="carbon:document-download" class="w-5" />
-        </button>
-      </div>
-      <span slot="tooltip-content">
-        <p class="text-center text-sm text-zinc-900 dark:text-zinc-50">
-          Download as PDF
-        </p>
-      </span>
-    </Tooltip>
   </div>
   <div id="resume" class="grid gap-3">
     <div class="flex items-baseline gap-2">
