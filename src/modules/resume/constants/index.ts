@@ -1,3 +1,3 @@
 export const ExperienceTypesOptions = {
-  Full: "full",
+  Full: 'full',
 } as const;

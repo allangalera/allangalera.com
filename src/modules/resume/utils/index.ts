@@ -3,19 +3,19 @@ import {
   formatDuration,
   intervalToDuration,
   closestTo,
-} from "date-fns";
+} from 'date-fns';
 import type {
   Experience,
   ExperienceTypes,
   JobTitles,
-} from "@/modules/resume/types";
-import { ExperienceTypesOptions } from "../constants";
+} from '@/modules/resume/types';
+import { ExperienceTypesOptions } from '../constants';
 
 export const showDate = (value: Date | undefined) => {
   if (!value) {
-    return "Present";
+    return 'Present';
   }
-  return format(value, "MMM yyyy");
+  return format(value, 'MMM yyyy');
 };
 
 export const period = ({ start, end }: { start: Date; end: Date }) => {
@@ -24,7 +24,7 @@ export const period = ({ start, end }: { start: Date; end: Date }) => {
     end: end,
   });
 
-  return formatDuration(duration, { format: ["years", "months"] });
+  return formatDuration(duration, { format: ['years', 'months'] });
 };
 
 export const getEndDate = (date: Date | undefined) => {
@@ -44,14 +44,14 @@ export const calculateJobStartandEndDate = (jobTitles: JobTitles[]) => {
     {
       startDatesArray: [],
       endDatesArray: [],
-    }
+    },
   );
 
   const startDate = closestTo(new Date(0), startDatesArray);
   const endDate = closestTo(new Date(), endDatesArray);
 
   if (!startDate || !endDate) {
-    throw new Error("[utils][calculateJobStartandEndDate]: wrong date format");
+    throw new Error('[utils][calculateJobStartandEndDate]: wrong date format');
   }
 
   return {
@@ -67,7 +67,7 @@ export const calculateWholeExperienceTime = (experiences: Experience[]) => {
   }>(
     (acc, curr) => {
       const { startDate, endDate } = calculateJobStartandEndDate(
-        curr.jobTitles
+        curr.jobTitles,
       );
       acc.startDatesArray.push(startDate);
       acc.endDatesArray.push(endDate);
@@ -76,14 +76,14 @@ export const calculateWholeExperienceTime = (experiences: Experience[]) => {
     {
       startDatesArray: [],
       endDatesArray: [],
-    }
+    },
   );
 
   const startDate = closestTo(new Date(0), startDatesArray);
   const endDate = closestTo(new Date(), endDatesArray);
 
   if (!startDate || !endDate) {
-    throw new Error("[utils][calculateWholeExperienceTime]: wrong date format");
+    throw new Error('[utils][calculateWholeExperienceTime]: wrong date format');
   }
 
   return {
@@ -95,8 +95,8 @@ export const calculateWholeExperienceTime = (experiences: Experience[]) => {
 export const getTypeFormat = (value: ExperienceTypes | undefined) => {
   switch (value) {
     case ExperienceTypesOptions.Full:
-      return "Full-time";
+      return 'Full-time';
     default:
-      return "";
+      return '';
   }
 };

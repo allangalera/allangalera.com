@@ -1,16 +1,16 @@
-import { FiGithub, FiLinkedin, FiTwitter } from "solid-icons/fi";
+import { FiGithub, FiLinkedin, FiTwitter } from 'solid-icons/fi';
 
 const SOCIAL_LINKS = [
   {
-    href: "https://github.com/allangalera/",
+    href: 'https://github.com/allangalera/',
     Icon: FiGithub,
   },
   {
-    href: "https://www.linkedin.com/in/allangalera/",
+    href: 'https://www.linkedin.com/in/allangalera/',
     Icon: FiLinkedin,
   },
   {
-    href: "https://twitter.com/GaleraAllan",
+    href: 'https://twitter.com/GaleraAllan',
     Icon: FiTwitter,
   },
 ];

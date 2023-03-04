@@ -3,10 +3,11 @@ import {
   getTypeFormat,
   period,
   showDate,
-} from "@/modules/resume/utils";
-import type { Experience } from "@/modules/resume/types";
-import type { Component } from "solid-js";
-import { FiLinkedin } from "solid-icons/fi";
+} from '@/modules/resume/utils';
+import type { Experience } from '@/modules/resume/types';
+import { Component, For, Show } from 'solid-js';
+import { FiLinkedin } from 'solid-icons/fi';
+import { Tags } from '@/modules/resume/components/Tags';
 
 type ExperienceProps = Experience;
 
@@ -31,7 +32,7 @@ export const ExperienceItem: Component<ExperienceProps> = (props) => {
         </div>
         <div>
           <p class="text-sm text-zinc-900 dark:text-zinc-50 text-right">
-            {getTypeFormat(props.type) + " · "}
+            {getTypeFormat(props.type) + ' · '}
             {period({ start: startDate, end: endDate })}
           </p>
           <p class="text-sm text-zinc-900 dark:text-zinc-50 text-right">
@@ -44,26 +45,36 @@ export const ExperienceItem: Component<ExperienceProps> = (props) => {
           <div class="w-min text-xs m-0 border-r border-r-zinc-300 dark:border-r-zinc-700"></div>
         </div>
         <div class="flex flex-col gap-2">
-          {props.jobTitles.map((jobTitle) => (
-            <div class="flex flex-col">
-              <p class="text-base font-bold text-zinc-900 dark:text-zinc-50">
-                {jobTitle.title}
-              </p>
-              {jobTitle.description && (
-                <p class="text-base text-zinc-900 dark:text-zinc-50">
-                  {jobTitle.description}
+          <For each={props.jobTitles}>
+            {(jobTitle) => (
+              <div class="flex flex-col">
+                <p class="text-base font-bold text-zinc-900 dark:text-zinc-50 leading-5">
+                  {jobTitle.title}
                 </p>
-              )}
-              <div>
-                <p class="text-sm text-zinc-900 dark:text-zinc-50">
-                  {jobTitle.location}
-                </p>
-                <p class="text-sm text-zinc-900 dark:text-zinc-50">
-                  {showDate(jobTitle.startDate)} - {showDate(jobTitle.endDate)}
-                </p>
+                {jobTitle.description && (
+                  <p class="text-base text-zinc-900 dark:text-zinc-50">
+                    {jobTitle.description}
+                  </p>
+                )}
+                <div>
+                  <p class="text-sm text-zinc-900 dark:text-zinc-50">
+                    {jobTitle.location}
+                  </p>
+                  <p class="text-sm text-zinc-900 dark:text-zinc-50">
+                    {showDate(jobTitle.startDate)} -{' '}
+                    {showDate(jobTitle.endDate)}
+                  </p>
+                </div>
+                <Show when={jobTitle.tags && jobTitle.tags.length > 0}>
+                  <div class="flex gap-2">
+                    <For each={jobTitle.tags}>
+                      {(tag) => <Tags tag={tag} />}
+                    </For>
+                  </div>
+                </Show>
               </div>
-            </div>
-          ))}
+            )}
+          </For>
         </div>
       </div>
     </div>

@@ -23,17 +23,17 @@
     offset,
     shift,
     arrow,
-  } from "@floating-ui/dom";
+  } from '@floating-ui/dom';
 
-  const tooltipWrapper = document.querySelectorAll("[data-tooltip-wrapper]");
+  const tooltipWrapper = document.querySelectorAll('[data-tooltip-wrapper]');
 
   tooltipWrapper.forEach((tooltipWrapper) => {
-    const element = tooltipWrapper.querySelector("[data-tooltip-element]");
+    const element = tooltipWrapper.querySelector('[data-tooltip-element]');
     const arrowElement: HTMLElement | null = tooltipWrapper.querySelector(
-      "[data-tooltip-arrow]"
+      '[data-tooltip-arrow]',
     );
     const tooltip: HTMLElement | null =
-      tooltipWrapper.querySelector("[data-tooltip]");
+      tooltipWrapper.querySelector('[data-tooltip]');
 
     if (!element || !arrowElement || !tooltip) {
       return;
@@ -44,7 +44,7 @@
         return;
       }
       computePosition(element, tooltip, {
-        placement: "bottom",
+        placement: 'bottom',
         middleware: [
           offset(12),
           flip(),
@@ -66,22 +66,22 @@
         const { x: arrowX, y: arrowY } = arrowData;
 
         const staticSide = {
-          top: "bottom",
-          right: "left",
-          bottom: "top",
-          left: "right",
-        }[placement.split("-")[0]];
+          top: 'bottom',
+          right: 'left',
+          bottom: 'top',
+          left: 'right',
+        }[placement.split('-')[0]];
 
         if (!staticSide) {
           return;
         }
 
         Object.assign(arrowElement.style, {
-          left: arrowX != null ? `${arrowX}px` : "",
-          top: arrowY != null ? `${arrowY}px` : "",
-          right: "",
-          bottom: "",
-          [staticSide]: "-4px",
+          left: arrowX != null ? `${arrowX}px` : '',
+          top: arrowY != null ? `${arrowY}px` : '',
+          right: '',
+          bottom: '',
+          [staticSide]: '-4px',
         });
       });
     }
@@ -90,7 +90,7 @@
       if (!tooltip) {
         return;
       }
-      tooltip.style.display = "block";
+      tooltip.style.display = 'block';
       update();
     }
 
@@ -98,12 +98,12 @@
       if (!tooltip) {
         return;
       }
-      tooltip.style.display = "";
+      tooltip.style.display = '';
     }
 
-    element.addEventListener("mouseenter", showTooltip);
-    element.addEventListener("mouseleave", hideTooltip);
-    element.addEventListener("focus", showTooltip);
-    element.addEventListener("blur", hideTooltip);
+    element.addEventListener('mouseenter', showTooltip);
+    element.addEventListener('mouseleave', hideTooltip);
+    element.addEventListener('focus', showTooltip);
+    element.addEventListener('blur', hideTooltip);
   });
 </script>

@@ -1,8 +1,8 @@
 ---
-import "./base.css";
-import { SEO, Props as SEOProps } from "astro-seo";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import './base.css';
+import { SEO, Props as SEOProps } from 'astro-seo';
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
 
 export interface Props {
   seoOptions: SEOProps;
@@ -11,11 +11,11 @@ export interface Props {
 const { seoOptions } = Astro.props;
 
 const seoDefaultOptions = {
-  title: "Allan Galera",
-  description: "Allan Galera personal website",
+  title: 'Allan Galera',
+  description: 'Allan Galera personal website',
   twitter: {
-    creator: "@allangalera",
-    site: "allangalera.com",
+    creator: '@allangalera',
+    site: 'allangalera.com',
   },
 } satisfies SEOProps;
 
@@ -35,8 +35,8 @@ const seo = {
     <script is:inline src="/prism.js"></script>
     <SEO {...seo} />
     <script>
-      import { getTheme, setTheme } from "@/utils";
-      import { THEME_OPTIONS } from "../constants";
+      import { getTheme, setTheme } from '@/utils';
+      import { THEME_OPTIONS } from '../constants';
 
       function initializeColorScheme() {
         const currentTheme = getTheme();
@@ -47,8 +47,8 @@ const seo = {
       initializeColorScheme();
 
       window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", () => {
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', () => {
           if (getTheme() === THEME_OPTIONS.System) {
             setTheme(THEME_OPTIONS.System);
           }

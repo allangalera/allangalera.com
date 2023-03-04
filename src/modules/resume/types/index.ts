@@ -1,13 +1,15 @@
-import type { ExperienceTypesOptions } from "@/modules/resume/constants";
+import type { ExperienceTypesOptions } from '@/modules/resume/constants';
+type NonEmptyArray<T> = [T, ...T[]];
 
 export type ExperienceTypes =
   (typeof ExperienceTypesOptions)[keyof typeof ExperienceTypesOptions];
 
 export type BaseJobTitle = {
   title: string;
-  skills: string[] | never[];
+  skills?: NonEmptyArray<string>;
   description?: string;
   location: string;
+  tags?: NonEmptyArray<string>;
 };
 
 export type JobPermanence = {

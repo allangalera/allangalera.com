@@ -1,7 +1,7 @@
-import { DropdownMenu } from "@kobalte/core";
-import { FiSun, FiMoon, FiMonitor } from "solid-icons/fi";
-import { setTheme } from "@/utils";
-import { THEME_OPTIONS } from "@/constants";
+import { DropdownMenu } from '@kobalte/core';
+import { FiSun, FiMoon, FiMonitor } from 'solid-icons/fi';
+import { setTheme } from '@/utils';
+import { THEME_OPTIONS } from '@/constants';
 
 export const ThemeDropdown = () => {
   return (

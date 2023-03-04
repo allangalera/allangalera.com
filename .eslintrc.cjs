@@ -9,7 +9,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     rules: {
       "@typescript-eslint/switch-exhaustiveness-check": "warn",
-      "prettier/prettier": "error"
+      "prettier/prettier": "off"
     },
     parserOptions: {
       project: true,

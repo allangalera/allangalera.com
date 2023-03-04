@@ -1,8 +1,8 @@
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
-import solidJs from "@astrojs/solid-js";
+import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/serverless';
+import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,11 +11,11 @@ export default defineConfig({
     tailwind({
       config: {
         applyBaseStyles: false,
-        path: "./tailwind.config.cjs",
+        path: './tailwind.config.cjs',
       },
     }),
     solidJs(),
   ],
-  output: "server",
+  output: 'server',
   adapter: vercel(),
 });

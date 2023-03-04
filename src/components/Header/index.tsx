@@ -1,4 +1,4 @@
-import { ThemeDropdown } from "@/components/ThemeDropdown";
+import { ThemeDropdown } from '@/components/ThemeDropdown';
 
 export const Header = () => {
   return (
