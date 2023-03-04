@@ -8,18 +8,19 @@ export const experiences = [
     jobTitles: [
       {
         title: 'Senior Frontend Developer',
-        description: "I'm a senior now :D",
+        description:
+          'With the new role I started mentoring my less experienced co-workers and also being recognized as a tech reference to the others around, providing solutions and giving life to ideas.',
         location: 'Sao Paulo, Brazil',
         startDate: new Date('2022-04'),
-        tags: ['Reactjs', 'Cypress', 'Directus', 'Strapi', ''],
+        tags: ['Reactjs', 'Cypress', 'Directus', 'Strapi', 'Agile'],
       },
       {
         title: 'Frontend Developer II',
-        description: 'Hey.',
+        description: 'Worked on the help center of a food delivery web app.',
         location: 'Sao Paulo, Brazil',
         endDate: new Date('2022-04'),
         startDate: new Date('2020-10'),
-        tags: ['Reactjs', 'Cypress', 'Strapi', ''],
+        tags: ['Reactjs', 'Cypress', 'Strapi', 'Agile'],
       },
     ],
   },
