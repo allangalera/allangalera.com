@@ -11,6 +11,7 @@
     "lint": "eslint",
     "astro": "astro",
     "sst:deploy": "sst deploy",
+    "sst:deploy:prod": "sst deploy --stage prod",
     "sst:dev": "sst dev"
   },
   "dependencies": {
