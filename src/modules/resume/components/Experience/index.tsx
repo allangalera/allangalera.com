@@ -17,7 +17,7 @@ export const ExperienceItem: Component<ExperienceProps> = (props) => {
     <div class="rounded-lg border border-zinc-300 dark:border-zinc-700">
       <div class="flex column gap-2 justify-between border-b border-b-zinc-300 dark:border-b-zinc-700 p-2">
         <div class="flex gap-2 items-center justify-center">
-          <h3 class="flex items-center text-lg md:text-xl leading-tight text-zinc-900 dark:text-zinc-50">
+          <h3 class="flex items-center text-xl leading-tight text-zinc-900 dark:text-zinc-50">
             {props.company}
           </h3>
           {props.linkedin && (
@@ -44,11 +44,11 @@ export const ExperienceItem: Component<ExperienceProps> = (props) => {
         <div class="flex py-1">
           <div class="w-min text-xs m-0 border-r border-r-zinc-300 dark:border-r-zinc-700"></div>
         </div>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-4">
           <For each={props.jobTitles}>
             {(jobTitle) => (
-              <div class="flex flex-col">
-                <p class="text-base font-bold text-zinc-900 dark:text-zinc-50 leading-5">
+              <div class="flex flex-col gap-1">
+                <p class="text-lg font-bold text-zinc-900 dark:text-zinc-50 leading-5">
                   {jobTitle.title}
                 </p>
                 {jobTitle.description && (

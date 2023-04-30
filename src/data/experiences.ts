@@ -12,6 +12,7 @@ export const experiences = [
           'With the new role I started mentoring my less experienced co-workers and also being recognized as a tech reference to the others around, providing solutions and giving life to ideas.',
         location: 'Sao Paulo, Brazil',
         startDate: new Date('2022-04'),
+        endDate: new Date('2023-04-28'),
         tags: ['Reactjs', 'Cypress', 'Directus', 'Strapi', 'Agile'],
       },
       {

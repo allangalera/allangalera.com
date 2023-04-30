@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
 import solidJs from '@astrojs/solid-js';
+import aws from 'astro-sst/lambda';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,5 +17,5 @@ export default defineConfig({
     solidJs(),
   ],
   output: 'server',
-  adapter: vercel(),
+  adapter: aws(),
 });
