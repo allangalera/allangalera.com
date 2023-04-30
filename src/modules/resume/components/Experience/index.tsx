@@ -25,6 +25,7 @@ export const ExperienceItem: Component<ExperienceProps> = (props) => {
               class=" text-zinc-900 dark:text-zinc-50 text-3xl rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 border border-zinc-300 dark:border-zinc-700"
               target="_blank"
               href={props.linkedin}
+              aria-label={`${props.company} linkedin profile`}
             >
               <FiLinkedin class="w-4 md:w-5 h-auto" />
             </a>
