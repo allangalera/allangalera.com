@@ -1,4 +1,5 @@
 import { FiGithub, FiLinkedin, FiTwitter } from 'solid-icons/fi';
+import { TbBrandMastodon } from 'solid-icons/tb';
 
 const SOCIAL_LINKS = [
   {
@@ -16,6 +17,11 @@ const SOCIAL_LINKS = [
     href: 'https://twitter.com/GaleraAllan',
     Icon: FiTwitter,
   },
+  {
+    name: 'mastodon profile',
+    href: 'https://hachyderm.io/@allangalera',
+    Icon: TbBrandMastodon,
+  },
 ];
 
 export const Footer = () => {
@@ -27,6 +33,7 @@ export const Footer = () => {
           href={href}
           target="_blank"
           aria-label={name}
+          rel="me"
         >
           <Icon />
         </a>
