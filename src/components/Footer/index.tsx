@@ -3,22 +3,22 @@ import { TbBrandMastodon } from 'solid-icons/tb';
 
 const SOCIAL_LINKS = [
   {
-    name: 'github profile',
+    name: 'Github',
     href: 'https://github.com/allangalera/',
     Icon: FiGithub,
   },
   {
-    name: 'linkedin profile',
+    name: 'Linkedin',
     href: 'https://www.linkedin.com/in/allangalera/',
     Icon: FiLinkedin,
   },
   {
-    name: 'twitter profile',
+    name: 'Twitter',
     href: 'https://twitter.com/GaleraAllan',
     Icon: FiTwitter,
   },
   {
-    name: 'mastodon profile',
+    name: 'Mastodon',
     href: 'https://hachyderm.io/@allangalera',
     Icon: TbBrandMastodon,
   },
@@ -32,7 +32,8 @@ export const Footer = () => {
           class="text-zinc-900 dark:text-zinc-50 text-3xl rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2"
           href={href}
           target="_blank"
-          aria-label={name}
+          aria-label={`${name} profile`}
+          title={name}
           rel="me"
         >
           <Icon />
