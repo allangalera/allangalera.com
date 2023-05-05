@@ -18,6 +18,7 @@ export default defineConfig({
     solidJs(),
     sitemap(),
   ],
+  site: 'https://allangalera.com',
   output: 'server',
   adapter: aws(),
 });
