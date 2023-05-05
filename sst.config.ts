@@ -10,7 +10,9 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
-      const site = new AstroSite(stack, 'site');
+      const site = new AstroSite(stack, 'site', {
+        customDomain: 'allangalera.com',
+      });
       stack.addOutputs({
         url: site.url,
       });
