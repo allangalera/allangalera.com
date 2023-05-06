@@ -38,3 +38,21 @@ export const getTheme = (): ThemeOptions => {
 
   return themeFromLocalStorage;
 };
+
+export const chunkify = <T extends Array<unknown | never>>(
+  items: T,
+  { pageSize } = { pageSize: 10 },
+) => {
+  const chunks: Array<T> = [];
+
+  items.forEach((item, index) => {
+    const chunkIndex = Math.floor(index / pageSize);
+    if (!chunks[chunkIndex]) {
+      chunks[chunkIndex] = [];
+    }
+
+    chunks[chunkIndex].push(item);
+  });
+
+  return chunks;
+};

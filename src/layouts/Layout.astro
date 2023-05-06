@@ -3,6 +3,9 @@ import './base.css';
 import { SEO, Props as SEOProps } from 'astro-seo';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { getPaginatedPosts } from '@/content/_utils';
+
+const posts = await getPaginatedPosts();
 
 export interface Props {
   seoOptions: SEOProps;
@@ -63,10 +66,10 @@ const seo = {
     </script>
   </head>
   <body
-    class="font-sans min-h-[100svh] grid grid-rows-[max-content_1fr_max-content] bg-zinc-50 dark:bg-zinc-900"
+    class="prose-zinc grid min-h-[100svh] grid-rows-[max-content_1fr_max-content] bg-zinc-50 font-sans text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50"
   >
-    <Header client:load />
-    <main class="p-5">
+    <Header client:load hasPosts={Boolean(posts?.length)} />
+    <main class="flex flex-col items-center p-5">
       <slot />
     </main>
     <Footer client:load />

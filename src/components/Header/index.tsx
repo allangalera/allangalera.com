@@ -1,15 +1,29 @@
 import { ThemeDropdown } from '@/components/ThemeDropdown';
+import type { Component } from 'solid-js';
 
-export const Header = () => {
+type HeaderProps = {
+  hasPosts: boolean;
+};
+export const Header: Component<HeaderProps> = (props) => {
   return (
-    <header class="flex justify-between items-center sticky top-0 p-2 bg-zinc-50 dark:bg-zinc-900 border-b border-b-zinc-300 dark:border-b-zinc-700">
+    <header class="sticky top-0 flex items-center justify-between border-b border-b-zinc-300 bg-zinc-50 p-2 dark:border-b-zinc-700 dark:bg-zinc-900">
       <a
-        class="text-zinc-900 dark:text-zinc-50 text-3xl rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 leading-tight"
+        class="rounded-lg p-2 text-3xl leading-tight hover:bg-zinc-100 dark:hover:bg-zinc-800"
         href="/"
       >
         Allan Galera
       </a>
-      <ThemeDropdown />
+      <div class="flex items-center justify-center gap-4">
+        {props.hasPosts ? (
+          <a class="text-lg underline" href="/posts">
+            Blog
+          </a>
+        ) : null}
+        <a class="text-lg underline" href="/resume">
+          Resume
+        </a>
+        <ThemeDropdown />
+      </div>
     </header>
   );
 };

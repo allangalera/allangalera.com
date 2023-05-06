@@ -15,53 +15,47 @@ export const ExperienceItem: Component<ExperienceProps> = (props) => {
   const { startDate, endDate } = calculateJobStartandEndDate(props.jobTitles);
   return (
     <div class="rounded-lg border border-zinc-300 dark:border-zinc-700">
-      <div class="flex column gap-2 justify-between border-b border-b-zinc-300 dark:border-b-zinc-700 p-2">
-        <div class="flex gap-2 items-center justify-center">
-          <h3 class="flex items-center text-xl leading-tight text-zinc-900 dark:text-zinc-50">
+      <div class="column flex justify-between gap-2 border-b border-b-zinc-300 p-2 dark:border-b-zinc-700">
+        <div class="flex items-center justify-center gap-2">
+          <h3 class="flex items-center text-xl leading-tight ">
             {props.company}
           </h3>
           {props.linkedin && (
             <a
-              class=" text-zinc-900 dark:text-zinc-50 text-3xl rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 border border-zinc-300 dark:border-zinc-700"
+              class="  rounded-lg border border-zinc-300 p-2 text-3xl hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
               target="_blank"
               href={props.linkedin}
               aria-label={`${props.company} linkedin profile`}
             >
-              <FiLinkedin class="w-4 md:w-5 h-auto" />
+              <FiLinkedin class="h-auto w-4 md:w-5" />
             </a>
           )}
         </div>
         <div>
-          <p class="text-sm text-zinc-900 dark:text-zinc-50 text-right">
+          <p class="text-right  text-sm">
             {getTypeFormat(props.type) + ' · '}
             {period({ start: startDate, end: endDate })}
           </p>
-          <p class="text-sm text-zinc-900 dark:text-zinc-50 text-right">
+          <p class="text-right  text-sm">
             {showDate(startDate)} - {showDate(endDate)}
           </p>
         </div>
       </div>
       <div class="flex gap-2 p-2">
         <div class="flex py-1">
-          <div class="w-min text-xs m-0 border-r border-r-zinc-300 dark:border-r-zinc-700"></div>
+          <div class="m-0 w-min border-r border-r-zinc-300 text-xs dark:border-r-zinc-700"></div>
         </div>
         <div class="flex flex-col gap-4">
           <For each={props.jobTitles}>
             {(jobTitle) => (
               <div class="flex flex-col gap-1">
-                <p class="text-lg font-bold text-zinc-900 dark:text-zinc-50 leading-5">
-                  {jobTitle.title}
-                </p>
+                <p class="text-lg font-bold  leading-5">{jobTitle.title}</p>
                 {jobTitle.description && (
-                  <p class="text-base text-zinc-900 dark:text-zinc-50">
-                    {jobTitle.description}
-                  </p>
+                  <p class="text-base ">{jobTitle.description}</p>
                 )}
                 <div>
-                  <p class="text-sm text-zinc-900 dark:text-zinc-50">
-                    {jobTitle.location}
-                  </p>
-                  <p class="text-sm text-zinc-900 dark:text-zinc-50">
+                  <p class="text-sm ">{jobTitle.location}</p>
+                  <p class="text-sm ">
                     {showDate(jobTitle.startDate)} -{' '}
                     {showDate(jobTitle.endDate)}
                   </p>

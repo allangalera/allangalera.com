@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getEntryBySlug } from 'astro:content';
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  throw new Error('Slug is required');
+}
+
+const entry = await getEntryBySlug('posts', slug);
+
+if (entry === undefined) {
+  return Astro.redirect('/404');
+}
+
+if (process.env.NODE_ENV !== 'development') {
+  if (entry.data.draft) {
+    return Astro.redirect('/404');
+  }
+}
+
+const { Content, remarkPluginFrontmatter } = await entry.render();
+
+const seo = {
+  title: `${entry.data.title} | Allan Galera`,
+};
+---
+
+<Layout seoOptions={seo}>
+  <div class="mb-52 mt-28 max-w-2xl">
+    <div class="mb-8 flex flex-col gap-4">
+      <h1>{entry.data.title}</h1>
+      <time
+        class="font-bold text-zinc-500 dark:text-zinc-300"
+        datetime={entry.data.publishedDate.toISOString()}
+      >
+        {
+          new Intl.DateTimeFormat('en-US', {
+            month: 'long',
+            year: 'numeric',
+            day: 'numeric',
+          }).format(entry.data.publishedDate)
+        } - {remarkPluginFrontmatter.minutesRead}
+      </time>
+    </div>
+    <div class="flex flex-col gap-8">
+      <Content />
+    </div>
+  </div>
+</Layout>

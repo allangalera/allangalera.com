@@ -1,5 +1,8 @@
 ---
+import { PostList } from '@/components/PostList';
+import { getPaginatedPosts } from '@/content/_utils';
 import Layout from '@/layouts/Layout.astro';
+let allBlogPosts = await getPaginatedPosts(0, 5);
 
 const seoOptions = {
   title: 'Home | Allan Galera',
@@ -7,8 +10,10 @@ const seoOptions = {
 ---
 
 <Layout seoOptions={seoOptions}>
-  <div class="h-full flex flex-col items-center justify-center gap-4">
-    <div class="max-w-lg flex flex-col gap-2 text-black dark:text-white">
+  <div
+    class="flex h-full max-w-2xl flex-col items-center justify-center gap-16 py-16"
+  >
+    <div class="flex flex-col gap-2">
       <h1>Hi,</h1>
       <p>I'm Allan Galera.</p>
       <p>
@@ -17,10 +22,14 @@ const seoOptions = {
         projects.
       </p>
     </div>
-    <div>
-      <a class="text-zinc-900 dark:text-zinc-50 underline" href="/resume"
-        >Resume</a
-      >
-    </div>
+    {
+      allBlogPosts.length ? (
+        <div class="flex w-full flex-col gap-4">
+          <h1>Latest posts</h1>
+          <hr />
+          <PostList client:load posts={allBlogPosts} />
+        </div>
+      ) : null
+    }
   </div>
 </Layout>

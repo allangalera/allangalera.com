@@ -4,11 +4,18 @@ import tailwind from '@astrojs/tailwind';
 import solidJs from '@astrojs/solid-js';
 import sitemap from '@astrojs/sitemap';
 import aws from 'astro-sst/lambda';
+import { remarkReadingTime } from './src/remark/remark-reading-time';
 
-// https://astro.build/config
 export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
   integrations: [
-    mdx(),
+    mdx({
+      shikiConfig: {
+        theme: 'css-variables',
+      },
+    }),
     tailwind({
       config: {
         applyBaseStyles: false,

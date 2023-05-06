@@ -20,6 +20,10 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# astro
+
+.astro/
+
 # sst stuff
 
 .sst/
