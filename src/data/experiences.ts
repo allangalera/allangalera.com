@@ -2,6 +2,19 @@ import type { Experience } from '@/modules/resume/types';
 
 export const experiences = [
   {
+    company: 'Trade Republic',
+    type: 'full',
+    linkedin: 'https://www.linkedin.com/company/trade-republic',
+    jobTitles: [
+      {
+        title: 'Engineer II',
+        location: 'Berlin, Germany',
+        startDate: new Date('2023-06-01'),
+        tags: ['Vuejs']
+      }
+    ]
+  },
+  {
     company: 'iFood',
     type: 'full',
     linkedin: 'https://www.linkedin.com/company/ifood-',
