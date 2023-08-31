@@ -7,12 +7,12 @@ export const experiences = [
     linkedin: 'https://www.linkedin.com/company/trade-republic',
     jobTitles: [
       {
-        title: 'Engineer II',
+        title: 'Frontend Engineer',
         location: 'Berlin, Germany',
         startDate: new Date('2023-06-01'),
-        tags: ['Vuejs']
-      }
-    ]
+        tags: ['Vuejs', 'Contentful', 'Nuxt'],
+      },
+    ],
   },
   {
     company: 'iFood',
