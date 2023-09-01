@@ -17,10 +17,8 @@ export default defineConfig({
       },
     }),
     tailwind({
-      config: {
-        applyBaseStyles: false,
-        path: './tailwind.config.cjs',
-      },
+      applyBaseStyles: false,
+      configFile: './tailwind.config.cjs',
     }),
     solidJs(),
     sitemap(),
