@@ -29,25 +29,55 @@ const seo = {
 };
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <script
-      is:inline
-      async
-      defer
-      data-website-id="617dbb1f-da10-4f51-ba05-99d340b0b430"
-      src="https://umami-cockroachdb.vercel.app/umami.js"
-    ></script>
-    <SEO {...seo} />
-    <script>
-      import { getTheme, setTheme } from '@/utils';
-      import { THEME_OPTIONS } from '../constants';
+    <script is:inline>
+      const THEME_OPTIONS = {
+        Light: 'light',
+        Dark: 'dark',
+        System: 'system',
+      };
+
+      const themes = Object.values(THEME_OPTIONS);
+
+      const isTheme = (value) => {
+        return themes.includes(value);
+      };
+
+      const getCurrentSystemTheme = () => {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? THEME_OPTIONS.Dark
+          : THEME_OPTIONS.Light;
+      };
+
+      const setTheme = (theme) => {
+        switch (theme) {
+          case THEME_OPTIONS.Dark:
+            document.documentElement.classList.add(THEME_OPTIONS.Dark);
+            break;
+          case THEME_OPTIONS.System:
+            if (getCurrentSystemTheme() === THEME_OPTIONS.Dark) {
+              document.documentElement.classList.add(THEME_OPTIONS.Dark);
+            } else {
+              document.documentElement.classList.remove(THEME_OPTIONS.Dark);
+            }
+            break;
+          case THEME_OPTIONS.Light:
+            document.documentElement.classList.remove(THEME_OPTIONS.Dark);
+        }
+
+        localStorage.setItem('theme', theme);
+      };
+
+      const getTheme = () => {
+        const themeFromLocalStorage = localStorage.getItem('theme');
+        if (themeFromLocalStorage == null || !isTheme(themeFromLocalStorage)) {
+          return THEME_OPTIONS.System;
+        }
+
+        return themeFromLocalStorage;
+      };
 
       function initializeColorScheme() {
         const currentTheme = getTheme();
@@ -65,6 +95,18 @@ const seo = {
           }
         });
     </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script
+      is:inline
+      async
+      defer
+      data-website-id="617dbb1f-da10-4f51-ba05-99d340b0b430"
+      src="https://umami-cockroachdb.vercel.app/umami.js"></script>
+    <SEO {...seo} />
   </head>
   <body
     class="prose-zinc grid min-h-[100svh] grid-rows-[max-content_1fr_max-content] bg-zinc-50 font-sans text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50"
