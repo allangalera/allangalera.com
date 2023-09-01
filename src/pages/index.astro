@@ -2,6 +2,7 @@
 import { PostList } from '@/components/PostList';
 import { getPaginatedPosts } from '@/content/_utils';
 import Layout from '@/layouts/Layout.astro';
+
 let allBlogPosts = await getPaginatedPosts(0, 5);
 
 const seoOptions = {
