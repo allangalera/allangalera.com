@@ -1,102 +1,124 @@
-@import "@fontsource/fira-mono";
-@import "@fontsource/jost";
+@import '@fontsource/fira-mono';
+@import '@fontsource/jost';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 ::selection {
-	@apply bg-purple-700 text-zinc-50;
+  @apply bg-purple-700 text-zinc-50;
 }
 
-html[class="dark"] ::selection {
-	@apply bg-purple-700 text-zinc-50;
+html[class='dark'] ::selection {
+  @apply bg-purple-700 text-zinc-50;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, button {
-	font-family: "Jost", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button {
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 0.4px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 2px;
 }
 
 code {
-	font-family: "Fira Mono", monospace;
+  font-family: 'Fira Mono', monospace;
 }
 
 h1 {
-    @apply text-5xl;
+  @apply text-5xl;
 }
 
 h2 {
-    @apply text-4xl;
+  @apply text-4xl;
 }
 
 h3 {
-    @apply text-3xl;
+  @apply text-3xl;
 }
 
 h4 {
-    @apply text-2xl;
+  @apply text-2xl;
 }
 
 h5 {
-    @apply text-xl;
+  @apply text-xl;
 }
 
 h6 {
-    @apply text-lg;
+  @apply text-lg;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	@apply font-bold leading-tight;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold leading-tight;
 }
 
 p {
-    @apply text-xl leading-relaxed;
+  @apply text-xl leading-relaxed;
 }
 
 p code {
-	@apply bg-zinc-100 py-[1px] px-2 rounded-lg border border-zinc-300 text-green-600;
+  @apply rounded-lg border border-zinc-300 bg-zinc-100 px-2 py-[1px] text-green-600;
 }
 
-html[class="dark"] p code {
-	@apply bg-zinc-800 border-zinc-600 text-green-300;
+html[class='dark'] p code {
+  @apply border-zinc-600 bg-zinc-800 text-green-300;
 }
 
 pre.astro-code {
-	@apply p-4 border border-zinc-300 rounded-lg my-8;
-	min-width: -webkit-fill-available;
-	min-width: -moz-available;
-	min-width: stretch;
-	max-width: 0;
+  @apply my-8 rounded-lg border border-zinc-300 p-4;
+  min-width: -webkit-fill-available;
+  min-width: -moz-available;
+  min-width: stretch;
+  max-width: 0;
 }
 
-html[class="dark"] pre.astro-code {
-	@apply border-zinc-600;
+html[class='dark'] pre.astro-code {
+  @apply border-zinc-600;
 }
 
 html {
-	--astro-code-color-text: var(--color-zinc-900);
-	--astro-code-color-background: var(--color-zinc-100);
-	--astro-code-token-constant: var(--color-green-600);
-	--astro-code-token-string: var(--color-zinc-900);
-	--astro-code-token-comment: var(--color-zinc-500);
-	--astro-code-token-keyword: var(--color-purple-800);
-	--astro-code-token-parameter: var(--color-green-600);
-	--astro-code-token-function: var(--color-amber-600);
-	--astro-code-token-string-expression: var(--color-green-600);
-	--astro-code-token-punctuation: var(--color-zinc-900);
-	--astro-code-token-link: var(--color-zinc-500);
+  --astro-code-color-text: var(--color-zinc-900);
+  --astro-code-color-background: var(--color-zinc-100);
+  --astro-code-token-constant: var(--color-green-600);
+  --astro-code-token-string: var(--color-zinc-900);
+  --astro-code-token-comment: var(--color-zinc-500);
+  --astro-code-token-keyword: var(--color-purple-800);
+  --astro-code-token-parameter: var(--color-green-600);
+  --astro-code-token-function: var(--color-amber-600);
+  --astro-code-token-string-expression: var(--color-green-600);
+  --astro-code-token-punctuation: var(--color-zinc-900);
+  --astro-code-token-link: var(--color-zinc-500);
 }
 
-html[class="dark"]  {
-	--astro-code-color-text: var(--color-zinc-50);
-	--astro-code-color-background: var(--color-zinc-800);
-	--astro-code-token-constant: var(--color-green-300);
-	--astro-code-token-string: var(--color-zinc-50);
-	--astro-code-token-comment: var(--color-zinc-300);
-	--astro-code-token-keyword: var(--color-purple-400);
-	--astro-code-token-parameter: var(--color-green-400);
-	--astro-code-token-function: var(--color-amber-400);
-	--astro-code-token-string-expression: var(--color-green-300);
-	--astro-code-token-punctuation: var(--color-zinc-50);
-	--astro-code-token-link: var(--color-zinc-300);
+html[class='dark'] {
+  --astro-code-color-text: var(--color-zinc-50);
+  --astro-code-color-background: var(--color-zinc-800);
+  --astro-code-token-constant: var(--color-green-300);
+  --astro-code-token-string: var(--color-zinc-50);
+  --astro-code-token-comment: var(--color-zinc-300);
+  --astro-code-token-keyword: var(--color-purple-400);
+  --astro-code-token-parameter: var(--color-green-400);
+  --astro-code-token-function: var(--color-amber-400);
+  --astro-code-token-string-expression: var(--color-green-300);
+  --astro-code-token-punctuation: var(--color-zinc-50);
+  --astro-code-token-link: var(--color-zinc-300);
 }
