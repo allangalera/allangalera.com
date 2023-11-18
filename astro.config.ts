@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import solidJs from '@astrojs/solid-js';
 import sitemap from '@astrojs/sitemap';
-import aws from 'astro-sst/lambda';
+import aws from 'astro-sst';
 import { remarkReadingTime } from './src/remark/remark-reading-time';
 
 export default defineConfig({
@@ -25,5 +25,8 @@ export default defineConfig({
   ],
   site: 'https://allangalera.com',
   output: 'server',
-  adapter: aws(),
+  adapter: aws({
+    deploymentStrategy: 'regional',
+    serverRoutes: ['/api/*'],
+  }),
 });
