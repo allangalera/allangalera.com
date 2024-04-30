@@ -79,8 +79,15 @@ p code {
   @apply rounded-lg border border-zinc-300 bg-zinc-100 px-2 py-[1px] text-green-600;
 }
 
+p a {
+  @apply text-green-600 underline;
+}
+
 html[class='dark'] p code {
   @apply border-zinc-600 bg-zinc-800 text-green-300;
+}
+html[class='dark'] p a {
+  @apply text-green-300;
 }
 
 pre.astro-code {
