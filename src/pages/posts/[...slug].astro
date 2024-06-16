@@ -1,6 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { getEntryBySlug } from 'astro:content';
+import { getEntry } from 'astro:content';
 
 const { slug } = Astro.params;
 
@@ -8,7 +8,7 @@ if (slug === undefined) {
   throw new Error('Slug is required');
 }
 
-const entry = await getEntryBySlug('posts', slug);
+const entry = await getEntry('posts', slug);
 
 if (entry === undefined) {
   return Astro.redirect('/404');

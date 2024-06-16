@@ -1,6 +1,6 @@
 import { PostItem } from '@/components/PostItem';
 import type { CollectionEntry } from 'astro:content';
-import { Component, For } from 'solid-js';
+import { type Component, For } from 'solid-js';
 
 type PostListProps = {
   posts: CollectionEntry<'posts'>[];

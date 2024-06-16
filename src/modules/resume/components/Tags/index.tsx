@@ -1,4 +1,4 @@
-import { Component, Show } from 'solid-js';
+import { type Component, Show } from 'solid-js';
 import { pascalCase } from 'change-case';
 
 type TagProps = {

@@ -5,7 +5,7 @@ import {
   showDate,
 } from '@/modules/resume/utils';
 import type { Experience } from '@/modules/resume/types';
-import { Component, For, Show } from 'solid-js';
+import { type Component, For, Show } from 'solid-js';
 import { FiLinkedin } from 'solid-icons/fi';
 import { Tags } from '@/modules/resume/components/Tags';
 
