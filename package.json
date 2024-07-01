@@ -38,9 +38,9 @@
     "@total-typescript/ts-reset": "^0.5.1",
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@typescript-eslint/parser": "^7.13.0",
-    "astro-sst": "2.41.5",
+    "astro-sst": "2.43.3",
     "autoprefixer": "^10.4.19",
-    "aws-cdk-lib": "2.132.1",
+    "aws-cdk-lib": "2.142.1",
     "constructs": "10.3.0",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^1.2.2",
@@ -50,7 +50,7 @@
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.4",
-    "sst": "2.41.5",
+    "sst": "2.43.3",
     "vite": "^5.3.1",
     "vite-tsconfig-paths": "^4.3.2"
   }
