@@ -4,6 +4,8 @@ type NonEmptyArray<T> = [T, ...T[]];
 export type ExperienceTypes =
   (typeof ExperienceTypesOptions)[keyof typeof ExperienceTypesOptions];
 
+export type JobDate = string;
+
 export type BaseJobTitle = {
   title: string;
   skills?: NonEmptyArray<string>;
@@ -13,8 +15,8 @@ export type BaseJobTitle = {
 };
 
 export type JobPermanence = {
-  endDate?: Date;
-  startDate: Date;
+  endDate?: JobDate;
+  startDate: JobDate;
 };
 
 export type JobTitles = BaseJobTitle & JobPermanence;

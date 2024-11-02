@@ -4,6 +4,7 @@ import {
   intervalToDuration,
   closestTo,
   differenceInDays,
+  parseISO,
 } from 'date-fns';
 import type {
   Experience,
@@ -12,17 +13,15 @@ import type {
 } from '@/modules/resume/types';
 import { ExperienceTypesOptions } from '../constants';
 
-export const getISODate = (dt?: Date): Date => {
-  if (!dt) {
-    dt = new Date();
+export const showDate = (date?: string | Date) => {
+  let isoDate;
+  if (date instanceof Date) {
+    isoDate = date ?? parseISO(new Date().toISOString());
+  } else {
+    isoDate = date ? parseISO(date) : parseISO(new Date().toISOString());
   }
-  return new Date(dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000);
-};
 
-export const showDate = (value: Date | undefined) => {
-  const isoDate = getISODate(value);
-
-  if (differenceInDays(isoDate, getISODate()) === 0) {
+  if (differenceInDays(isoDate, parseISO(new Date().toISOString())) === 0) {
     return 'Present';
   }
 
@@ -30,11 +29,9 @@ export const showDate = (value: Date | undefined) => {
 };
 
 export const period = ({ start, end }: { start: Date; end: Date }) => {
-  const startISO = getISODate(start);
-  const endISO = getISODate(end);
   const duration = intervalToDuration({
-    start: startISO,
-    end: endISO,
+    start,
+    end,
   });
 
   return formatDuration(duration, { format: ['years', 'months'] });
@@ -50,8 +47,12 @@ export const calculateJobStartandEndDate = (jobTitles: JobTitles[]) => {
     endDatesArray: Date[];
   }>(
     (acc, curr) => {
-      acc.startDatesArray.push(getISODate(curr.startDate));
-      acc.endDatesArray.push(getISODate(curr.endDate));
+      acc.startDatesArray.push(parseISO(curr.startDate));
+      acc.endDatesArray.push(
+        curr.endDate
+          ? parseISO(curr.endDate)
+          : parseISO(new Date().toISOString()),
+      );
       return acc;
     },
     {
@@ -60,8 +61,11 @@ export const calculateJobStartandEndDate = (jobTitles: JobTitles[]) => {
     },
   );
 
-  const startDate = closestTo(getISODate(new Date(0)), startDatesArray);
-  const endDate = closestTo(getISODate(), endDatesArray);
+  const startDate = closestTo(
+    parseISO(new Date(0).toISOString()),
+    startDatesArray,
+  );
+  const endDate = closestTo(parseISO(new Date().toISOString()), endDatesArray);
 
   if (!startDate || !endDate) {
     throw new Error('[utils][calculateJobStartandEndDate]: wrong date format');
@@ -92,8 +96,11 @@ export const calculateWholeExperienceTime = (experiences: Experience[]) => {
     },
   );
 
-  const startDate = closestTo(getISODate(new Date(0)), startDatesArray);
-  const endDate = closestTo(getISODate(), endDatesArray);
+  const startDate = closestTo(
+    parseISO(new Date(0).toISOString()),
+    startDatesArray,
+  );
+  const endDate = closestTo(parseISO(new Date().toISOString()), endDatesArray);
 
   if (!startDate || !endDate) {
     throw new Error('[utils][calculateWholeExperienceTime]: wrong date format');
