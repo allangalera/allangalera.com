@@ -1,5 +1,6 @@
 import { FiGithub, FiLinkedin, FiTwitter } from 'solid-icons/fi';
 import { TbBrandMastodon } from 'solid-icons/tb';
+import { TbButterfly } from 'solid-icons/tb';
 
 const SOCIAL_LINKS = [
   {
@@ -18,6 +19,11 @@ const SOCIAL_LINKS = [
     Icon: FiTwitter,
   },
   {
+    name: 'Bluesky',
+    href: 'https://bsky.app/profile/allangalera.bsky.social',
+    Icon: TbButterfly,
+  },
+  {
     name: 'Mastodon',
     href: 'https://hachyderm.io/@allangalera',
     Icon: TbBrandMastodon,
@@ -26,7 +32,7 @@ const SOCIAL_LINKS = [
 
 export const Footer = () => {
   return (
-    <footer class="flex  items-center justify-center gap-2 border-t border-t-zinc-300 p-2 dark:border-t-zinc-700">
+    <footer class="flex items-center justify-center gap-2 border-t border-t-zinc-300 p-2 dark:border-t-zinc-700">
       {SOCIAL_LINKS.map(({ href, Icon, name }) => (
         <a
           class="rounded-lg p-2 text-3xl hover:bg-zinc-100 dark:hover:bg-zinc-800"
