@@ -11,10 +11,6 @@ module.exports = {
       "@typescript-eslint/switch-exhaustiveness-check": "warn",
       "prettier/prettier": "off"
     },
-    parserOptions: {
-      project: true,
-      tsconfigRootDir: __dirname,
-    },
     overrides: [
       {
         files: ["*.astro"],

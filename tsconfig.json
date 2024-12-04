@@ -9,6 +9,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "allowJs": true,
+    "strictNullChecks": true,
     "paths": {
       "@/*": ["./src/*"]
     },
