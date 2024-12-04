@@ -1,21 +1,16 @@
-import type { SSTConfig } from 'sst';
-import { AstroSite } from 'sst/constructs';
+/// <reference path="./.sst/platform/config.d.ts" />
 
-export default {
-  config(_input) {
+export default $config({
+  app(input) {
     return {
-      name: 'allangaleracom',
-      region: 'us-east-1',
+      name: 'allangalera-personal',
+      removal: input?.stage === 'production' ? 'retain' : 'remove',
+      home: 'aws',
     };
   },
-  stacks(app) {
-    app.stack(function Site({ stack }) {
-      const site = new AstroSite(stack, 'site', {
-        customDomain: 'allangalera.com',
-      });
-      stack.addOutputs({
-        url: site.url,
-      });
+  async run() {
+    new sst.aws.Astro('MyWeb', {
+      domain: 'allangalera.com',
     });
   },
-} satisfies SSTConfig;
+});
