@@ -4,7 +4,8 @@ import { SEO } from 'astro-seo';
 import type { Props as SEOProps } from 'astro-seo';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { getPaginatedPosts } from '@/content/_utils';
+import { getPaginatedPosts } from '@/data/_utils';
+import { IS_NODE_PRODUCTION } from '@/utils';
 
 const posts = await getPaginatedPosts();
 
@@ -100,10 +101,15 @@ const seo = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <script
-      defer
-      src="https://umami-fly-io.fly.dev/script.js"
-      data-website-id="2292440b-6860-47b2-83ab-ce8e049c7281"></script>
+    {
+      IS_NODE_PRODUCTION && (
+        <script
+          defer
+          src="https://umami-fly-io.fly.dev/script.js"
+          data-website-id="2292440b-6860-47b2-83ab-ce8e049c7281"
+        />
+      )
+    }
     <SEO {...seo} />
   </head>
   <body

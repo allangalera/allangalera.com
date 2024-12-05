@@ -4,7 +4,7 @@ module.exports= {
   theme: {
     extend: {},
   },
-  plugins: [require("@kobalte/tailwindcss"), function ({ addBase, theme }) {
+  plugins: [function ({ addBase, theme }) {
     function extractColorVars (colorObj, colorGroup = '') {
       return Object.keys(colorObj).reduce((vars, colorKey) => {
         const value = colorObj[colorKey];

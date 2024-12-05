@@ -56,3 +56,6 @@ export const chunkify = <T extends Array<unknown | never>>(
 
   return chunks;
 };
+
+export const IS_NODE_PRODUCTION = process.env.NODE_ENV === 'production';
+export const IS_NODE_DEVELOPMENT = process.env.NODE_ENV === 'development';

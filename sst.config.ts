@@ -4,7 +4,7 @@ export default $config({
   app(input) {
     return {
       name: 'allangalera-personal',
-      removal: input?.stage === 'production' ? 'retain' : 'remove',
+      removal: 'remove',
       home: 'aws',
     };
   },

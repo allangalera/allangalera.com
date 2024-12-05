@@ -1,7 +1,7 @@
 ---
 import { PostList } from '@/components/PostList';
 import Layout from '@/layouts/Layout.astro';
-import { getPaginatedPosts } from '@/content/_utils';
+import { getPaginatedPosts } from '@/data/_utils';
 const allPosts = await getPaginatedPosts();
 
 const seo = {
@@ -9,7 +9,7 @@ const seo = {
 };
 
 if (allPosts.length === 0) {
-  return Astro.redirect('/404');
+  return new Response(null, { status: 404 });
 }
 ---
 
