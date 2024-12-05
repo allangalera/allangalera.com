@@ -21,7 +21,6 @@ export default defineConfig({
     mdx({
       shikiConfig: {
         theme: 'css-variables',
-        wrap: true,
       },
     }),
     tailwind({
