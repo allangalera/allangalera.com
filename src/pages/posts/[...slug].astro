@@ -1,6 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 const { slug } = Astro.params;
 
@@ -11,16 +11,16 @@ if (slug === undefined) {
 const entry = await getEntry('posts', slug);
 
 if (entry === undefined) {
-  return Astro.redirect('/404');
+  return new Response(null, { status: 404 });
 }
 
 if (process.env.NODE_ENV !== 'development') {
   if (entry.data.draft) {
-    return Astro.redirect('/404');
+    return new Response(null, { status: 404 });
   }
 }
 
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await render(entry);
 
 const seo = {
   title: `${entry.data.title} | Allan Galera`,

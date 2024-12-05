@@ -7,7 +7,7 @@ type PostItemProps = CollectionEntry<'posts'>;
 export const PostItem: Component<PostItemProps> = (props) => {
   return (
     <li class="flex flex-col gap-2 rounded border border-zinc-300 p-2 dark:border-zinc-700">
-      <a class="text-2xl hover:underline" href={`/posts/${props.slug}`}>
+      <a class="text-2xl hover:underline" href={`/posts/${props.id}`}>
         {props.data.title}
       </a>
 
@@ -19,7 +19,7 @@ export const PostItem: Component<PostItemProps> = (props) => {
             day: 'numeric',
           }).format(props.data.publishedDate)}
         </time>
-        <span>{readingTime(props.body).text}</span>
+        <span>{readingTime(props.body ?? '').text}</span>
       </div>
     </li>
   );

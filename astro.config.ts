@@ -32,8 +32,5 @@ export default defineConfig({
   ],
   site: 'https://allangalera.com',
   output: 'server',
-  adapter: aws({
-    deploymentStrategy: 'regional',
-    serverRoutes: ['/api/*'],
-  }),
+  adapter: aws(),
 });
