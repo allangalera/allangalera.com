@@ -1,9 +1,8 @@
 import { FiSun, FiMoon, FiMonitor } from 'solid-icons/fi';
+import type { ThemeOptions } from '@/types';
 import { setTheme } from '@/utils';
 import { THEME_OPTIONS } from '@/constants';
-
 import { Menu } from '@ark-ui/solid/menu';
-import type { ThemeOptions } from '@/types';
 
 export const ThemeDropdown = () => (
   <Menu.Root
