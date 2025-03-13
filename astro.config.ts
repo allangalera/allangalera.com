@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import tailwind from '@astrojs/tailwind';
 import solidJs from '@astrojs/solid-js';
 import sitemap from '@astrojs/sitemap';
 import aws from 'astro-sst';
 import rehypeExternalLinks from 'rehype-external-links';
 import { remarkReadingTime } from './src/remark/remark-reading-time';
+import tailwindcss from '@tailwindcss/vite';
 
 const rehypeExternalLinksConfig = {
   target: '_blank',
@@ -23,14 +23,13 @@ export default defineConfig({
         theme: 'css-variables',
       },
     }),
-    tailwind({
-      applyBaseStyles: false,
-      configFile: './tailwind.config.cjs',
-    }),
     solidJs(),
     sitemap(),
   ],
   site: 'https://allangalera.com',
   output: 'server',
   adapter: aws(),
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
