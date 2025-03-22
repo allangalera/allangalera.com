@@ -22,15 +22,6 @@ p,
 a,
 button {
   font-family: 'Jost', sans-serif;
-  letter-spacing: 0.4px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  letter-spacing: 2px;
 }
 
 code {
@@ -68,12 +59,13 @@ h4,
 h5,
 h6 {
   font-weight: var(--font-weight-bold);
-  letter-spacing: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.25;
 }
 
 p {
   font-size: var(--text-xl);
-  letter-spacing: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wide);
 }
 
 p code {
