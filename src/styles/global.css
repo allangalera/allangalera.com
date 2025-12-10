@@ -2,6 +2,8 @@
 @import '@fontsource/fira-mono';
 @import '@fontsource/jost';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 ::selection {
   background-color: var(--color-purple-700);
   color: var(--color-zinc-50);
