@@ -1,9 +1,5 @@
 ---
-import { PostList } from '@/components/PostList';
-import { getPaginatedPosts } from '@/data/_utils';
 import Layout from '@/layouts/Layout.astro';
-
-let allBlogPosts = await getPaginatedPosts(0, 5);
 
 const seoOptions = {
   title: 'Home | Allan Galera',
@@ -23,14 +19,5 @@ const seoOptions = {
         keep a few personal projects.
       </p>
     </div>
-    {
-      allBlogPosts.length ? (
-        <div class="flex w-full flex-col gap-4">
-          <h1>Latest posts</h1>
-          <hr />
-          <PostList posts={allBlogPosts} />
-        </div>
-      ) : null
-    }
   </div>
 </Layout>
