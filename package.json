@@ -15,13 +15,13 @@
     "sst:dev": "sst dev"
   },
   "dependencies": {
-    "@ark-ui/solid": "^4.5.1",
+    "@ark-ui/solid": "^4.10.2",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/solid-js": "^5.1.3",
-    "@fontsource/fira-mono": "^5.1.0",
-    "@fontsource/jost": "^5.1.1",
-    "@tailwindcss/vite": "^4.0.14",
+    "@fontsource/fira-mono": "^5.2.7",
+    "@fontsource/jost": "^5.2.8",
+    "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
     "astro-seo": "^0.8.4",
     "change-case": "^5.4.4",
@@ -30,24 +30,24 @@
     "reading-time": "^1.5.0",
     "rehype-external-links": "^3.0.0",
     "solid-icons": "^1.1.0",
-    "solid-js": "^1.9.3",
-    "tailwindcss": "^4.0.14"
+    "solid-js": "^1.9.10",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.6.1",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.50.1",
+    "@typescript-eslint/parser": "^8.50.1",
     "astro-sst": "3.1.4",
-    "eslint": "^9.16.0",
-    "eslint-plugin-astro": "^1.3.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.2.1",
-    "postcss": "^8.4.49",
-    "prettier": "^3.4.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "postcss": "^8.5.6",
+    "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.9",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "sst": "3.17.25",
-    "vite": "^6.0.3",
+    "vite": "^6.4.1",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
