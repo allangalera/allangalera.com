@@ -15,7 +15,7 @@
     "sst:dev": "sst dev"
   },
   "dependencies": {
-    "@ark-ui/solid": "^4.10.2",
+    "@ark-ui/solid": "^5.30.0",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/solid-js": "^5.1.3",
